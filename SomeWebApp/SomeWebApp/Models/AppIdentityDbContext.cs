@@ -9,7 +9,7 @@ namespace SomeWebApp.Models
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
         : base(options)
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
     }
 }

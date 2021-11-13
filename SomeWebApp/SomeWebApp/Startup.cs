@@ -12,6 +12,8 @@ using SomeWebApp.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SomeWebApp.Models.Implementation;
+using SomeWebApp.Models.Interfaces;
 
 namespace SomeWebApp
 {
@@ -40,6 +42,9 @@ namespace SomeWebApp
                 options.Password.RequireNonAlphanumeric = false;
             })
                 .AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+
+            services.AddTransient<INewsRepository, EFNewsRepository>();
+            services.AddTransient<IBlockedUserRepository, EFBlockedUserRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
